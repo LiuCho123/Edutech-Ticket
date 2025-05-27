@@ -32,9 +32,9 @@ public class TicketReporteController {
         return ResponseEntity.ok(tickets);
     }
 
-    @PostMapping
+    @PostMapping("/crear")
     public ResponseEntity<TicketReporte> crearTicket(@RequestBody TicketReporte ticket) {
-    TicketReporte nuevoTicket = ticketReporteService.save(ticket.getDescripcion(), ticket.getIdUsuario());
+    TicketReporte nuevoTicket = ticketReporteService.save(ticket.getDescripcion(), ticket.getIdUsuario(), ticket.getIdCurso());
     return new ResponseEntity<>(nuevoTicket, HttpStatus.CREATED);
 }
 
@@ -45,15 +45,6 @@ public class TicketReporteController {
         return ResponseEntity.ok(ticket);
     }
 
-    /*
-     * @GetMapping("/buscar-por-usuario/{idUsuario}")
-     * public ResponseEntity<List<TicketReporte>>
-     * buscarTicketsPorUsuario(@PathVariable int idUsuario) {
-     * List<TicketReporte> tickets =
-     * this.ticketReporteService.findByIdUsuario(idUsuario);
-     * return ResponseEntity.ok(tickets);
-     * }
-     */
 
     @PutMapping("/tickets/{id}/responder")
     public ResponseEntity<String> responderTicket(

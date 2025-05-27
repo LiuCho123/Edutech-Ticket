@@ -41,12 +41,16 @@ public class TicketReporte {
     @Column(name = "respuesta")
     private String respuesta;
 
+    @Column(name = "id_curso", nullable = true)
+    private Long idCurso;
+
     // Constructor para crear ticket desde el lado del usuario
-    public TicketReporte(String descripcion, Long idUsuario) {
+    public TicketReporte(String descripcion, Long idUsuario, Long idCurso) {
         this.descripcion = descripcion;
         this.idUsuario = idUsuario;
         this.idEmpleado = null;
         this.respuesta = null;
+        this.idCurso = null;
     }
 
     // Constructor para actualizar ticket desde el lado del empleado
